@@ -1,0 +1,23 @@
+# Secrets & Keys (QUAN TRỌNG: Tuyệt đối không commit lên GitHub)
+.env
+*.env
+*.env.local
+
+# Build state & caches
+.build_state.json
+blueprint.json
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

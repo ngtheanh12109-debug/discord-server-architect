@@ -1,0 +1,97 @@
+# PROMPT THIẾT KẾ SERVER DISCORD: CỘNG ĐỒNG GARENA DELTA FORCE
+
+**Ngữ cảnh:** Đóng vai là một chuyên gia thiết lập Discord Server. Hãy tạo một máy chủ dành cho cộng đồng người chơi Garena Delta Force (do player tự vận hành, không phải server official).
+**Yêu cầu cốt lõi:** Bỏ qua các kênh an ninh/verify. Tối ưu hóa cho 3 chế độ chơi chính (Warfare, Operations, Kích Nổ). Chia rõ nền tảng PC và Mobile. Tích hợp hệ thống Role phân quyền chặt chẽ.
+
+---
+
+## PHẦN 1: CẤU TRÚC KÊNH & TÍNH NĂNG CHI TIẾT
+
+### 📢 1. THÔNG TIN CỘNG ĐỒNG (Category Đặc Biệt)
+*Mục đích: Bảng tin một chiều. Nơi Ban Quản Trị (BQT) truyền đạt thông tin xuống cho member.*
+* `#thong-bao`: Đăng tải các quyết định, cập nhật thay đổi về cấu trúc server discord.
+* `#luat-sever`: Niêm yết quy định ứng xử, từ khóa cấm, luật cấm toxic/hack/cheat.
+* `#su-kien`: Lên lịch và thông báo các giải đấu cộng đồng, sự kiện phát quà/code.
+* `#tin-tuc-game`: Cập nhật patch notes, vũ khí mới, meta từ Garena Delta Force.
+
+### 🌐 2. GIAO LƯU (Category Public)
+*Mục đích: Khu vực tương tác tự do, kết nối cộng đồng.*
+* `#chat-tong`: Kênh trò chuyện phiếm, chém gió về mọi chủ đề.
+* `#tim-dong-doi`: Kênh LFG (Looking For Group) tổng hợp để ping tìm team nhanh.
+* `#khoe-chien-tich`: Nơi member chia sẻ hình ảnh chuỗi thắng, video highlight, top 1.
+* `#hoi-dap-newbie`: Khu vực "Lính Mới", hỗ trợ setting đồ họa, chỉnh phím, giải đáp cơ chế game.
+* `🔊 Sảnh Chờ`: Voice channel tụ tập tự do (Không giới hạn slot).
+* `🔊 Trò Chuyện Kênh Tổng`: Voice channel giao lưu (Không giới hạn slot).
+
+### ⚔️ 3. WARFARE (Chiến Trường 24vs24)
+*Mục đích: Phục vụ chế độ chiến tranh quy mô lớn, xe cộ, khí tài.*
+* `#thao-luan-warfare`: Bàn luận cách điều khiển trực thăng, xe tăng, meta chiếm cứ điểm.
+* `🔊 WF - Lệnh Tổng [0/24]`: Room voice cỡ lớn cho nguyên 1 phe (thường dùng cho clan war hoặc party đông).
+* `🔊 WF - Squad 1 (PC) [0/4]`: Tiểu đội 4 người chơi trên PC.
+* `🔊 WF - Squad 2 (PC) [0/4]`: Tiểu đội 4 người chơi trên PC.
+* `🔊 WF - Squad 1 (Mobile) [0/4]`: Tiểu đội 4 người chơi trên Mobile.
+* `🔊 WF - Squad 2 (Mobile) [0/4]`: Tiểu đội 4 người chơi trên Mobile.
+
+### 🚁 4. OPERATIONS (Trích Xuất Sinh Tồn)
+*Mục đích: Phục vụ chế độ loot đồ, sinh tồn, cướp bóc (đặc thù team 3 người).*
+* `#thao-luan-operations`: Phân tích giá trị vật phẩm, bản đồ bãi loot, hướng chạy bo an toàn.
+* `#cho-den-khoe-loot`: Kênh "flex" thẻ đỏ, vật phẩm tiền tỷ, súng độ full phụ kiện xịn.
+* `🔊 Ops - Squad 1 (PC) [0/3]`: Room 3 người hệ PC.
+* `🔊 Ops - Squad 2 (PC) [0/3]`: Room 3 người hệ PC.
+* `🔊 Ops - Squad 1 (Mobile) [0/3]`: Room 3 người hệ Mobile.
+* `🔊 Ops - Squad 2 (Mobile) [0/3]`: Room 3 người hệ Mobile.
+
+### 💣 5. KÍCH NỔ (Chiến Thuật 5vs5)
+*Mục đích: Phục vụ chế độ try-hard đặt bom truyền thống.*
+* `#thao-luan-kich-no`: Chia sẻ line-up ném mìn, bom khói, bom mù, các góc kê hẹp (angle).
+* `#tim-team-rank`: Khu vực nghiêm túc ping tìm đồng đội cùng mức rank để leo hạng.
+* `🔊 Kích Nổ - Rank 1 (PC) [0/5]`: Đội hình 5 người hệ PC.
+* `🔊 Kích Nổ - Rank 2 (PC) [0/5]`: Đội hình 5 người hệ PC.
+* `🔊 Kích Nổ - Rank 1 (Mobile) [0/5]`: Đội hình 5 người hệ Mobile.
+* `🔊 Kích Nổ - Rank 2 (Mobile) [0/5]`: Đội hình 5 người hệ Mobile.
+
+### 🛡️ 6. QUÂN ĐOÀN & CLAN
+*Mục đích: Không gian tuyển dụng và xây dựng thế lực in-game.*
+* `#tuyen-quan-doan`: Các chủ Guild đăng form tuyển thành viên, yêu cầu K/DA.
+* `#tuyen-tuyen-thu`: Tìm kiếm pro-player lập team đi bắn giải do Garena hoặc cộng đồng tổ chức.
+* `🔊 Phòng Giao Lưu Clan [0/15]`: Nơi các thành viên clan họp mặt chiến thuật.
+
+### 🛠️ 7. HỖ TRỢ & GÓP Ý
+*Mục đích: Giao tiếp giữa Member và Ban Quản Trị.*
+* `#bao-loi-server`: Report lỗi setup kênh, lỗi bot nhạc, lỗi mất role.
+* `#gop-y-cong-dong`: Đề xuất thêm bot, thêm emoji hoặc thay đổi cấu trúc kênh.
+* `#tao-ticket`: Kênh chứa nút tạo Ticket (Kênh ẩn riêng tư 1-1) để tố cáo hack, lừa đảo, toxic.
+
+---
+
+## PHẦN 2: THIẾT LẬP QUYỀN CHAT (PERMISSIONS) CHUYÊN SÂU
+
+Để server không bị loạn, các kênh thuộc category **📢 THÔNG TIN CỘNG ĐỒNG** phải được thiết lập quyền nghiêm ngặt như sau:
+
+**1. Đối với Role `@everyone` (Tất cả thành viên bình thường):**
+* 👁️ **View Channels (Xem Kênh):** `✅ Cho phép` (Để họ đọc được thông báo).
+* 💬 **Send Messages (Gửi tin nhắn):** `❌ Từ chối` (Ngăn chặn mem chat rác, spam trôi thông báo).
+* 🧵 **Create Public/Private Threads (Tạo luồng):** `❌ Từ chối`.
+* ➕ **Add Reactions (Thả reaction mới):** `❌ Từ chối` (Tránh member spam icon bậy bạ. Tuy nhiên, họ vẫn có thể bấm vào các icon do Admin đã thả sẵn).
+
+**2. Đối với Role `👑 Admin / Founder` (Chủ sở hữu & Quản trị cao cấp):**
+* 💬 **Send Messages (Gửi tin nhắn):** `✅ Cho phép` (Là những người duy nhất được phép đăng bài).
+* 📢 **Mention @everyone, @here:** `✅ Cho phép` (Dùng để ping thông báo khẩn cấp/sự kiện).
+* 🛠️ **Manage Messages (Quản lý tin nhắn):** `✅ Cho phép` (Để ghim (pin) bài viết quan trọng hoặc sửa/xóa thông báo cũ).
+
+---
+
+## PHẦN 3: HỆ THỐNG PHÂN QUYỀN ROLES (HIERARCHY)
+
+*Yêu cầu tạo Roles theo đúng thứ tự từ trên xuống dưới trong Server Settings:*
+* **👑 Admin / Founder** - Quyền tối cao (Administrator).
+* **🛡️ Moderator** - Quyền quản lý (Manage Channels, Kick/Ban, Manage Messages). Xử lý toxic.
+* **🛠️ Helper** - Hỗ trợ (Mute/Deafen trong Voice, Manage Messages). Kéo mem, hướng dẫn newbie.
+* **💎 Server Booster** - Role tự động (Ưu tiên gửi file lớn, đổi nickname).
+* **🚩 Trưởng Quân Đoàn** - Được cấp quyền ping `@here` tại kênh `#tuyen-quan-doan`.
+* **🖥️ PC Player** - Role định danh nền tảng (Cho phép mọi người Ping / Mentionable).
+* **📱 Mobile Player** - Role định danh nền tảng (Cho phép mọi người Ping / Mentionable).
+* **🎯 Chuyên Warfare** - Role sở thích (Mentionable).
+* **🚁 Chuyên Operations** - Role sở thích (Mentionable).
+* **💣 Chuyên Kích Nổ** - Role sở thích (Mentionable).
+* **👤 Thành Viên** - Role mặc định. (Tắt quyền Mention @everyone/@here để chống spam).

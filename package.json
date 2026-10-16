@@ -1,0 +1,20 @@
+{
+  "name": "discord-builder-gemini",
+  "version": "1.0.0",
+  "description": "Token-optimized Discord Server Builder powered by Google Gemini API",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node bin/cli.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "discord",
+    "gemini",
+    "token-optimization",
+    "discord-api",
+    "discord-builder"
+  ],
+  "author": "",
+  "license": "MIT"
+}
