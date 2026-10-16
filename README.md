@@ -1,9 +1,157 @@
+<div id="top"></div>
+
 # ⚡ Discord Server Architect AI (Gemini Token-Optimized)
 
 [![Node.js Version](https://img.shields.io/badge/Node.js-v18%2B-green.svg)](https://nodejs.org)
 [![Gemini Model](https://img.shields.io/badge/Gemini%20API-3.8%20Flash-blue.svg)](https://ai.google.dev/)
 [![Discord API](https://img.shields.io/badge/Discord%20API-v10-5865F2.svg)](https://discord.com/developers/docs)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+<div align="center">
+
+**Languages:** **English** | [**Tiếng Việt 🇻🇳**](#tieng-viet)
+
+</div>
+
+---
+
+An automated Discord server architecture and deployment engine powered by **Google Gemini AI** in a **single turn**, featuring **3 token compression techniques** that reduce up to **80% Input Tokens** and **70% Output Tokens**.
+
+## 💎 3 Core Token Compression Techniques
+
+1. **Minified Schema Keys:** Highly compact JSON key identifiers (`roles` $\rightarrow$ `r`, `categories` $\rightarrow$ `c`, `channels` $\rightarrow$ `ch`, `overwrites` $\rightarrow$ `ow`, `permissions` $\rightarrow$ `p`).
+2. **Permission Shorthand Codes:** Eliminates verbose strings (such as `"READ_MESSAGE_HISTORY"`) and heavy 64-bit bitwise math on the AI side. The model emits lightweight 2–4 character shorthand codes (`"VIEW"`, `"SEND"`, `"HIST"`, `"M_CH"`), which are mapped to Discord API v10 `BigInt` bitfields locally by a JavaScript compiler.
+3. **Category Permission Inheritance:** Overwrite rules (`ow`) are concentrated at the **Category (`c`)** level. Child channels (`ch`) inherit permissions by default (`ow: []`), reducing generated JSON length by up to **70%**.
+
+---
+
+## 🛡️ Key Features
+
+- ⚡ **1-Turn Deterministic Blueprint:** Enforces Gemini API `v1beta` structured JSON via `responseSchema` for deterministic and strictly validated outputs.
+- ⏳ **Auto Rate-Limit Handling & Countdown:** Catches Discord `429 (Too Many Requests)` responses automatically, showing a terminal countdown timer and resuming safely upon reset without crashing.
+- 🔄 **State Checkpoint & Auto-Resume:** Tracks execution state in `.build_state.json`. If disconnected or interrupted, re-running resumes from the exact breakpoint, reusing existing Roles/Categories to prevent resource duplication.
+- 🛠️ **Smart Fallback 400:** Detects guilds without Community features enabled and automatically downgrades Announcement channels (`type: 5`) to standard Text channels (`type: 0`).
+
+---
+
+## 📂 Project Structure
+
+```text
+├── bin/
+│   └── cli.js                  # Interactive terminal CLI runner
+├── src/
+│   ├── discord-compiler.js     # Context compressor & bitfield permission compiler
+│   ├── discord-executor.js     # Execution engine (topological mapping, 429 auto-wait, fallback)
+│   ├── gemini-api.js           # 1-turn structured Google Gemini API module
+│   ├── gemini-schema.js        # System instructions & compressed responseSchema
+│   └── index.js                # Library entry point
+├── test/
+│   └── compiler.test.js        # Automated unit tests for compiler and resolver
+├── .env.example                # Sample environment configuration
+├── .gitignore                  # Prevents accidental commits of keys and local states
+├── package.json
+└── README.md
+```
+
+---
+
+## 🚀 Quick Start
+
+### 1. Requirements
+- [Node.js](https://nodejs.org) version **18.0.0** or higher (with native `fetch` and `node --test` support).
+
+### 2. Installation
+```bash
+git clone https://github.com/your-username/discord-server-architect.git
+cd discord-server-architect
+```
+
+### 3. Environment Configuration
+Copy `.env.example` to create `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Fill in the required credentials:
+```env
+GEMINI_API_KEY=AIzaSy...              # Obtain from Google AI Studio
+GEMINI_MODEL=gemini-3.8-flash        # Recommended: gemini-3.8-flash
+DISCORD_BOT_TOKEN=MTU...             # Bot token with Administrator permissions
+DISCORD_GUILD_ID=12345678...         # Target Discord Guild ID
+```
+
+### 4. Run CLI
+```bash
+node bin/cli.js
+```
+- The CLI automatically loads configurations from `.env`.
+- If `prompt.txt` exists, it prompts to load your architecture specification directly from the file.
+- Gemini returns the generated blueprint, displays token consumption metrics, and asks for user confirmation `(y/N)` before executing changes on Discord.
+
+---
+
+## 💻 Programmatic Usage (Library Integration)
+
+```javascript
+import {
+  compressGuildState,
+  generateServerBlueprint,
+  DiscordBlueprintExecutor
+} from "./src/index.js";
+
+// 1. Compress raw Discord roles & channels
+const compressedState = compressGuildState(guildId, rawRoles, rawChannels);
+
+// 2. Request a 1-turn blueprint from Gemini
+const { blueprint, usage } = await generateServerBlueprint({
+  apiKey: process.env.GEMINI_API_KEY,
+  model: "gemini-3.8-flash",
+  userPrompt: "Create a Gaming server with a welcome lounge, team voice lobbies, and gaming categories",
+  compressedStateJson: compressedState
+});
+
+console.log(`Blueprint created. Token usage: ${usage.totalTokenCount}`);
+
+// 3. Deploy blueprint to Discord
+const executor = new DiscordBlueprintExecutor({
+  botToken: process.env.DISCORD_BOT_TOKEN,
+  guildId: guildId,
+  onProgress: ({ stage, current, total, message }) => {
+    console.log(`[${stage}] ${current}/${total}: ${message}`);
+  }
+});
+
+await executor.execute(blueprint);
+```
+
+---
+
+## 🧪 Running Unit Tests
+
+Run tests using the native Node Test Runner without external dependencies:
+
+```bash
+node --test
+```
+
+---
+
+## 📄 License
+
+Distributed under the [MIT License](LICENSE).
+
+---
+
+<div id="tieng-viet"></div>
+
+# 🇻🇳 Tiếng Việt
+
+<div align="center">
+
+[ ⬆️ Back to Top / Quay lại đầu trang ](#top)
+
+</div>
 
 Hệ thống kiến tạo & tự động hóa triển khai **Discord Server** hoàn chỉnh trong **1-Turn duy nhất** bằng **Google Gemini AI**, tích hợp **3 kỹ thuật nén token đột phá** giúp tiết kiệm tới **80% Input Token** và **70% Output Token**.
 
@@ -70,7 +218,7 @@ cp .env.example .env
 GEMINI_API_KEY=AIzaSy...              # Lấy tại Google AI Studio
 GEMINI_MODEL=gemini-3.8-flash        # Khuyên dùng gemini-3.8-flash
 DISCORD_BOT_TOKEN=MTU...             # Token Bot có quyền Administrator
-DISCORD_GUILD_ID=112233445566...     # ID Discord Server cần tạo
+DISCORD_GUILD_ID=12345678...         # ID Discord Server cần tạo
 ```
 
 ### 4. Chạy Bằng CLI
